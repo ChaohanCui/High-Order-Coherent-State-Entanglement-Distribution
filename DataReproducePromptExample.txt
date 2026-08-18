@@ -1,0 +1,87 @@
+You are helping me regenerate manuscript simulation data from source code.
+
+Repository context:
+This repository contains a GitHub release package for coherent-state-assisted QAM entanglement-distribution simulations. The lightweight scripts under `scripts/` mainly extract saved data. The actual simulation source code is under `source_code/src/` and `source_code/scripts/`.
+
+Goal:
+Regenerate the manuscript data from source code as much as possible, then compare the newly generated data against the curated data under `data/raw/` and the figure-ready CSVs under `outputs/subfigure_data/`.
+
+Instructions:
+
+1. Read `README.md`, `DATA_MANIFEST.md`, and `source_code/README.md`.
+2. Create a clean Python environment and install `requirements.txt`.
+3. Run the lightweight validation first:
+
+   python scripts/validate_release.py
+
+4. Make a new output folder:
+
+   outputs/regenerated_from_source/
+
+5. Identify the simulation source files corresponding to each figure:
+
+   - Fig. 1(c), Fig. 2(a), Fig. 5(a):
+     Use the raw-label/full-state SRM and vacuum-omit SRM QAM scan source code.
+     Relevant files include:
+     `source_code/scripts/check_raw_label_vs_vacuum_omit_srm_qam.py`
+     `source_code/scripts/run_qam32_raw_label_vs_vacuum_seeded.py`
+     `source_code/scripts/run_qam32_srm_dense_extra_points.py`
+     `source_code/scripts/run_qam32_srm_low_loss_refined.py`
+     `source_code/scripts/run_qam32_srm_low_loss_scipy_refined.py`
+
+   - Fig. 2(b):
+     Use the fixed-loss d-sweep source code:
+     `source_code/scripts/sweep_raw_label_srm_qam_branch_shapes.py`
+
+   - Fig. 3 interface-loss scan:
+     Use:
+     `source_code/src/raw_label_reflection_source_loss_srm.py`
+     `source_code/src/ultradense_16qam_raw_label_reflection_source_transition.py`
+
+   - Fig. 3 phase-bias scan:
+     Use:
+     `source_code/src/scan_reflection_source_phase_error.py`
+
+   - End Matter Fig. 5(b):
+     Use:
+     `source_code/src/global_povm_search.py`
+     `source_code/src/optimize_qam4_general_povm.py`
+
+6. For each figure, inspect the script CLI options with `--help`.
+7. Run small smoke tests first with reduced grids or fewer points to confirm the code works.
+8. Then run the manuscript-resolution simulations using the same QAM orders, losses, d-ranges, and settings described by the curated data:
+
+   - M = 2, 4, 8, 16, 32 for ideal channel-loss SRM comparisons.
+   - M = 4, 8, 16 for fixed-loss hashing-bound-vs-d sweeps at 0.9 and 0.95 dB.
+   - M = 2, 4, 8, 16 for interface-loss scans at 0.25 dB per-arm channel loss.
+   - M = 2, 4, 8 for phase-bias scans at interface loss 0.1 and 0.2 dB, per-arm channel loss 0.25 dB, delta_phi from -0.3 pi to +0.3 pi.
+   - M = 4 for the 32-outcome optimized POVM comparison.
+
+9. Save all regenerated raw outputs under:
+
+   outputs/regenerated_from_source/
+
+   Do not overwrite `data/raw/`.
+
+10. After regeneration, write comparison scripts that compare regenerated outputs with the curated release data:
+    - compare rates,
+    - optimized spacing d,
+    - branch-transition locations,
+    - and selected Fig. 5(b) optimized-POVM metadata.
+
+11. Report:
+    - exact commands run,
+    - runtime for each simulation,
+    - number of workers used,
+    - output files generated,
+    - max absolute difference from curated data,
+    - and any simulations that were skipped because they are too expensive.
+
+Important:
+Do not silently substitute curated CSVs for regenerated data. If a figure is generated from saved curated data rather than from source, state that explicitly.
+
+Important for Fig. 5(b):
+The selected optimized POVM is stored in an NPZ file. When evaluating that saved POVM, use the metadata in the NPZ as canonical. If rerunning the nonconvex optimizer, note that results may depend on multi-start search settings and may not reproduce exactly unless the same search configuration and random seed are used.
+
+Performance guidance:
+Start with smoke tests before launching full 32-QAM or optimized-POVM jobs. Estimate runtime before running heavy simulations. Use parallel workers only if available and safe. Avoid changing source code unless necessary; if changes are needed, make them in a separate clearly named branch or output folder.

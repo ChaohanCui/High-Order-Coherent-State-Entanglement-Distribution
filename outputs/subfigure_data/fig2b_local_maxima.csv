@@ -1,0 +1,22 @@
+M,constellation,loss_db,spacing_d,hashing_bound_bits_per_attempt,grid_region,success_probability,average_target_fidelity,useful_outcomes,is_global_maximum,subfigure,receiver
+4,4-QAM,0.9,1.694,0.260796832472,high_d,1.0,0.601506094495,16,1,Fig. 2(b),full_state_raw_label_srm
+4,4-QAM,0.9,0.9825,0.248121714665,full_d,1.0,0.835131808775,12,0,Fig. 2(b),full_state_raw_label_srm
+4,4-QAM,0.9,1.34,0.242949084904,bridge,1.0,0.719089690201,14,0,Fig. 2(b),full_state_raw_label_srm
+4,4-QAM,0.95,0.944,0.234785542816,low_d,1.0,0.839706707258,12,1,Fig. 2(b),full_state_raw_label_srm
+4,4-QAM,0.95,1.708,0.218720425486,high_d,1.0,0.582733705105,16,0,Fig. 2(b),full_state_raw_label_srm
+4,4-QAM,0.95,1.292,0.211751299755,bridge,1.0,0.724171919805,14,0,Fig. 2(b),full_state_raw_label_srm
+8,8-QAM,0.9,1.835,0.257767474131,full_d,1.0,0.27882111269,64,1,Fig. 2(b),full_state_raw_label_srm
+8,8-QAM,0.9,0.554,0.211557801971,low_d,0.999999579198,0.847133066733,56,0,Fig. 2(b),full_state_raw_label_srm
+8,8-QAM,0.95,1.88,0.208056388725,full_d,1.0,0.255711878101,64,1,Fig. 2(b),full_state_raw_label_srm
+8,8-QAM,0.95,0.534,0.198744686657,low_d,0.999999509264,0.850425146912,56,0,Fig. 2(b),full_state_raw_label_srm
+8,8-QAM,0.95,1.3,0.163896540559,full_d,0.999999999995,0.447396852948,50,0,Fig. 2(b),full_state_raw_label_srm
+16,16-QAM,0.9,1.965,0.263977839322,high_d,1.0,0.104630956928,256,1,Fig. 2(b),full_state_raw_label_srm
+16,16-QAM,0.9,0.4325,0.230675338099,low_d,0.999994250244,0.840749169157,224,0,Fig. 2(b),full_state_raw_label_srm
+16,16-QAM,0.9,1.31,0.16206111329,full_d,0.999999898421,0.253743758673,222,0,Fig. 2(b),full_state_raw_label_srm
+16,16-QAM,0.9,0.88,0.160458442915,full_d,0.999994437978,0.507410070271,200,0,Fig. 2(b),full_state_raw_label_srm
+16,16-QAM,0.9,0.91,0.16044373962,full_d,0.999995501183,0.486254328473,208,0,Fig. 2(b),full_state_raw_label_srm
+16,16-QAM,0.95,0.4175,0.217575783625,low_d,0.999995746374,0.843876617469,224,1,Fig. 2(b),full_state_raw_label_srm
+16,16-QAM,0.95,2.0,0.209421236249,high_d,1.0,0.0951539694326,256,0,Fig. 2(b),full_state_raw_label_srm
+16,16-QAM,0.95,0.83,0.125034599112,full_d,0.999995545819,0.528328056828,176,0,Fig. 2(b),full_state_raw_label_srm
+16,16-QAM,0.95,1.27,0.107755008861,full_d,0.999999242877,0.257655207269,198,0,Fig. 2(b),full_state_raw_label_srm
+16,16-QAM,0.95,1.14,0.10742735298,full_d,0.999998046638,0.325092842141,200,0,Fig. 2(b),full_state_raw_label_srm
